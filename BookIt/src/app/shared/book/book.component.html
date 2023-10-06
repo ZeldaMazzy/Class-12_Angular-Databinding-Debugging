@@ -1,1 +1,14 @@
-<p>book works!</p>
+<a class="list-group-item clearfix book-link" 
+    (click)="bookWasSelected.emit()">
+    <div class="float-left">
+        <h5 class="list-group-item-heading"><strong>{{book.title}}</strong> - {{book.author}}</h5>
+        <p class="list-group-item-text mb-0"><small>{{book.genre}}</small></p>
+    </div>
+    <div class="float-right">
+        <img [src]="book.coverImgPath" 
+            [alt]="book.title" 
+            [title]="book.title" 
+            class="img-responsive rounded"
+            style="max-height: 50px">
+    </div>
+</a>

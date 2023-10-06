@@ -1,9 +1,15 @@
 <div class="row justify-between">
     <div class="col-lg-6 col-md-12">
         <h5>My Saved Books</h5>
-        <app-book-list></app-book-list>
+        <app-book-list (bookSelectionEvent)="selectBook($event)"></app-book-list>
     </div>
     <div class="col-lg-6 col-md-12">
-        <app-book-details></app-book-details>
+        <app-book-details 
+            *ngIf="bookIsSelected; else selectABook"
+            [book]="bookToDisplay"
+            ></app-book-details>
+        <ng-template #selectABook>
+            <p>Please select a book</p>
+        </ng-template>
     </div>
 </div>
