@@ -8,4 +8,12 @@ import { Book } from 'src/app/shared/book/book.model';
 })
 export class BookDetailsComponent {
   @Input() book: Book;
+  books = [];
+
+  constructor() {
+    setInterval(() => {
+      this.books.push(new Book("", "", "", ""))
+    }, 2000)
+  }
+
 }
