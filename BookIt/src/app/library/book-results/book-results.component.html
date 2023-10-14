@@ -1,5 +1,12 @@
 <div class="row mb-3" *ngFor="let bookData of bookList">
     <div class="col-md-12">
         <app-book [book]="bookData"></app-book>
+        <button
+            class="float-right"
+            style="border: none; font-size: 16px"
+            (click)="onSaveBook(bookData)"
+            >
+            &plus;
+        </button>
     </div>
 </div>
