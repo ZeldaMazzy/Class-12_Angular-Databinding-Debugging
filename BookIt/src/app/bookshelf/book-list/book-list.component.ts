@@ -1,5 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
-import { TEST_BOOK_LIST } from 'src/app/shared/book/book.constants';
+import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
 
@@ -30,6 +29,4 @@ export class BookListComponent implements OnInit {
     console.log("The book at position number ", bookIndex, " is ", this.bookList[bookIndex])
     this.bookshelfService.removeBookByIndex(bookIndex);
   }
-
-  handleBookSelection() {}
 }

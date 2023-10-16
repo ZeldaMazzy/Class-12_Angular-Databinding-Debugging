@@ -8,4 +8,5 @@ import { Book } from './book.model';
 })
 export class BookComponent {
   @Input() book: Book;
+  @Input() bookIndex: number;
 }
