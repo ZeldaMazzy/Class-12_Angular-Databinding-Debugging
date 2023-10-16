@@ -8,9 +8,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'BookIt';
   currentPage: string = "bookshelf";
-
-  changeCurrentPage(page: string): void {
-    console.log("Event emitted from the navigation component: ", page);
-    this.currentPage = page;
-  }
 }

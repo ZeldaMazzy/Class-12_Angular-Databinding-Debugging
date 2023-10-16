@@ -8,11 +8,4 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class NavigationComponent {
   collapsed: boolean = true;
   show: boolean = false;
-
-  @Output() changePage = new EventEmitter<string>();
-
-  onSelectPage(page: string): void {
-    console.log("This page was clicked: ", page);
-    this.changePage.emit(page);
-  }
 }

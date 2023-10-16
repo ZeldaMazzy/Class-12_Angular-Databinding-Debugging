@@ -10,6 +10,8 @@ import { BookResultsComponent } from './library/book-results/book-results.compon
 import { BookSearchComponent } from './library/book-search/book-search.component';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { BookComponent } from './shared/book/book.component';
+import { AppRoutingModule } from './app-routing.module';
+import { NotFoundComponent } from './shared/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import { BookComponent } from './shared/book/book.component';
     BookResultsComponent,
     BookSearchComponent,
     NavigationComponent,
-    BookComponent
+    BookComponent,
+    NotFoundComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
