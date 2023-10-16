@@ -19,10 +19,6 @@ export class BookshelfComponent implements OnInit {
     )
   }
 
-  selectBook(selectedBook: Book): void {
-    this.bookshelfService
-  }
-
   get bookIsSelected(): boolean {
     return this.bookToDisplay.title != '' && this.bookToDisplay.author != ''
   }

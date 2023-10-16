@@ -30,4 +30,6 @@ export class BookListComponent implements OnInit {
     console.log("The book at position number ", bookIndex, " is ", this.bookList[bookIndex])
     this.bookshelfService.removeBookByIndex(bookIndex);
   }
+
+  handleBookSelection() {}
 }
