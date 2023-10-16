@@ -13,6 +13,7 @@ import { BookComponent } from './shared/book/book.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-home.component';
+import { EditComponent } from './bookshelf/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-hom
     NavigationComponent,
     BookComponent,
     NotFoundComponent,
-    BookshelfHomeComponent
+    BookshelfHomeComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
