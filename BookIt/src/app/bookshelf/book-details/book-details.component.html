@@ -31,7 +31,16 @@
 </div>
 
 <div class="row">
-    <div class="col-12">
-        <button type="button" class="btn btn-primary">Edit Book</button>
+    <div style="width:100%; text-align:center">
+        <button type="button" class="btn btn-light btn-sm mx-1" (click)="onEditBook()" title="Edit Book">
+            <span class="material-symbols-outlined">
+                edit
+            </span>
+        </button>
+        <button type="button" class="btn btn-outline-danger btn-sm mx-1" (click)="onRemoveBook()" title="Delete Book">
+            <span class="material-symbols-outlined">
+                delete
+            </span>
+        </button>
     </div>
 </div>

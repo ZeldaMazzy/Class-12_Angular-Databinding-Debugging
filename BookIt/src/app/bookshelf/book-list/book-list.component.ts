@@ -19,14 +19,11 @@ export class BookListComponent implements OnInit {
     this.bookshelfService.bookListChanged.subscribe(
       books => {
         this.bookList = books.slice();
-        console.log("Book list was changed: ", books);
       }
     )
   }
 
   onRemoveBook(bookIndex): void {
-    console.log("I am in the component. We are deleting book number ", bookIndex);
-    console.log("The book at position number ", bookIndex, " is ", this.bookList[bookIndex])
     this.bookshelfService.removeBookByIndex(bookIndex);
   }
 }

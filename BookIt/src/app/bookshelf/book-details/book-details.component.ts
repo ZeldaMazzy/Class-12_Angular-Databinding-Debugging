@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Book } from 'src/app/shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
 
@@ -10,17 +10,27 @@ import { BookshelfService } from '../bookshelf.service';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book;
+  bookIndex: number;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private bookshelfService: BookshelfService
+    private bookshelfService: BookshelfService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      const index = +params["book-id"];
-      console.log("The URL Changed. This is what comes after bookshelf/ - ", index)
-      this.book = this.bookshelfService.getBookByIndex(index);
+      this.bookIndex = +params["book-id"];
+      this.book = this.bookshelfService.getBookByIndex(this.bookIndex);
     })
+  }
+
+  onEditBook(): void {
+    this.router.navigate(["../", this.bookIndex, "edit"], {relativeTo: this.activatedRoute})
+  }
+
+  onRemoveBook(): void {
+    this.bookshelfService.removeBookByIndex(this.bookIndex);
+    this.router.navigate(["/bookshelf"])
   }
 }
