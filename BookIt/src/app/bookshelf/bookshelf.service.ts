@@ -21,7 +21,7 @@ export class BookshelfService {
         return this.globalBookList[bookIndex]
     }
 
-    public selectBook(book: Book): void {
+    public emitSelectedBook(book: Book): void {
         this.bookSelected.next(book);
     }
 
