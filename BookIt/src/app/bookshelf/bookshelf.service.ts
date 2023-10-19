@@ -1,14 +1,15 @@
-import { EventEmitter, Injectable } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Book } from "../shared/book/book.model";
 import { TEST_BOOK_LIST } from "../shared/book/book.constants";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: "root"
 })
 export class BookshelfService {
 
-    bookSelected: EventEmitter<Book> = new EventEmitter();
-    bookListChanged: EventEmitter<Book[]> = new EventEmitter();
+    bookSelected: Subject<Book> = new Subject();
+    bookListChanged: Subject<Book[]> = new Subject();
 
     private globalBookList: Book[] = TEST_BOOK_LIST.slice();
 
@@ -21,12 +22,12 @@ export class BookshelfService {
     }
 
     public selectBook(book: Book): void {
-        this.bookSelected.emit(book);
+        this.bookSelected.next(book);
     }
 
     public createBook(bookToCreate: Book): void {
         this.globalBookList.push(bookToCreate);
-        this.bookListChanged.emit(this.globalBookList.slice());
+        this.bookListChanged.next(this.globalBookList.slice());
     }
 
     public removeBookByIndex(bookIndex: number): void {
@@ -35,7 +36,6 @@ export class BookshelfService {
         console.log("We are now in the service! We are still deleting book number ", bookIndex);
         this.globalBookList.splice(bookIndex, 1);
         console.log("The book was successfully deleted. Broadcasting the updated list now!");
-        this.bookListChanged.emit(this.globalBookList.slice())
-
+        this.bookListChanged.next(this.globalBookList.slice())
     }
 }
