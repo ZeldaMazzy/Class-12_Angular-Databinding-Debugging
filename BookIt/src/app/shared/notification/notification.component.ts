@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription, interval } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { BookshelfService } from 'src/app/bookshelf/bookshelf.service';
 
 @Component({
@@ -17,7 +17,6 @@ export class NotificationComponent implements OnInit, OnDestroy {
       {
         const message: string = "This book was selected: " + book.title;
         console.log(message);
-        alert(message)
     })
   }
 
