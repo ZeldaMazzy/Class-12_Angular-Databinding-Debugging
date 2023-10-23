@@ -17,6 +17,7 @@ import { EditComponent } from './bookshelf/edit/edit.component';
 import { NotificationComponent } from './shared/notification/notification.component';
 import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
 import { FormsModule } from '@angular/forms';
+import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule } from '@angular/forms';
     BookshelfHomeComponent,
     EditComponent,
     NotificationComponent,
-    BookFormTdComponent
+    BookFormTdComponent,
+    BookFormReactiveComponent
   ],
   imports: [
     BrowserModule,
