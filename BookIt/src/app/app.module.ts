@@ -15,6 +15,7 @@ import { NotFoundComponent } from './shared/not-found/not-found.component';
 import { BookshelfHomeComponent } from './bookshelf/bookshelf-home/bookshelf-home.component';
 import { EditComponent } from './bookshelf/edit/edit.component';
 import { NotificationComponent } from './shared/notification/notification.component';
+import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { NotificationComponent } from './shared/notification/notification.compon
     NotFoundComponent,
     BookshelfHomeComponent,
     EditComponent,
-    NotificationComponent
+    NotificationComponent,
+    BookFormTdComponent
   ],
   imports: [
     BrowserModule,

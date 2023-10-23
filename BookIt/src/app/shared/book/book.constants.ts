@@ -1,12 +1,5 @@
 import { Book } from "./book.model";
 
-export const EMPTY_BOOK: Book = {
-    title: '',
-    author: '',
-    genre: '',
-    coverImgPath: ''
-  }
-
 export const TEST_BOOK_LIST: Book[] = [
     new Book(
         "Clean Code", 
