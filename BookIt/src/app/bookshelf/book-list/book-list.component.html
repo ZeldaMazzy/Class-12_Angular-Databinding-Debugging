@@ -1,3 +1,8 @@
+<div class="row my-2">
+    <div class="col-12">
+        <button type="button" class="btn btn-outline-primary btn-sm float-right" routerLink="new-book">Add New Book</button>
+    </div>
+</div>
 <div class="row mb-3" 
     *ngFor="let bookData of bookList; let i = index">
     <div class="col-md-12">
@@ -7,11 +12,5 @@
             (click)="onRemoveBook(i)">
             &minus;
         </button>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-12">
-        <button type="button" class="btn btn-primary" routerLink="new-book">Add New Book</button>
     </div>
 </div>
