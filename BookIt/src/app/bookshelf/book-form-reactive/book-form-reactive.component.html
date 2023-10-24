@@ -1,1 +1,62 @@
-<p>book-form-reactive works!</p>
+<form (ngSubmit)="submitBook()">
+    <div id="book-form-data">
+
+        <!-- Title -->
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" 
+                id="title" 
+                name="title" 
+                class="form-control"
+            />
+            <span *ngIf="false" class="text-danger fs-6">Title Is Required</span>
+        </div>
+
+        <!-- Author -->
+        <div class="form-group">
+            <label for="author">Author</label>
+            <input type="text" 
+                name="author" 
+                id="author"
+                class="form-control"
+            />
+            <span *ngIf="false" class="text-danger fs-6">Author Is Required.</span>
+        </div>
+
+        <!-- Genre -->
+        <div class="form-group">
+            <label for="genre">Genre</label>
+            <select name="genre" 
+                id="genre"
+                class="form-control"
+            >
+                <option value="Mystery">Mystery</option>
+                <option value="Self-Help">Self-Help</option>
+                <option value="Fantasy">Fantasy</option>
+                <option value="Science-Fiction">Science Fiction</option>
+                <option value="NonFiction">NonFiction</option>
+                <option value="Drama">Drama</option>
+                <option value="Accurate Historical Retelling">Accurate Historical Retelling</option>
+            </select>
+            <span *ngIf="false" class="fs-6 text-danger">Genre Is Required</span>
+
+            <!-- Submit -->
+            <div class="mt-4" style="width:100%; text-align:center">
+                <button type="submit" 
+                    class="btn btn-success"
+                    [disabled]="false"
+                >Add Book</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="row mt-4 ps-3" *ngIf="formWasSubmitted">
+    <div class="col-xs-12">
+        <small>Form was submitted!</small>
+        <h3>Title: {{ bookDetails.title }}</h3>
+        <h4>Author: {{ bookDetails.author }}</h4>
+        <p>Genre: {{ bookDetails.genre }}</p>
+        <img [src]="bookDetails.coverImgPath" [alt]="bookDetails.title" style="max-width:150px;border-radius: 15px;">
+    </div>
+</div>
