@@ -9,7 +9,7 @@ import { BookshelfService } from 'src/app/bookshelf/bookshelf.service';
   templateUrl: './book-results.component.html',
   styleUrls: ['./book-results.component.css']
 })
-export class BookResultsComponent implements OnInit {
+export class BookResultsComponent {
 
   public bookList: Book[] = [];
 
@@ -17,10 +17,6 @@ export class BookResultsComponent implements OnInit {
     private bookshelfService: BookshelfService,
     private libraryService: LibraryService
   ){}
-
-  ngOnInit(): void {
-    this.bookList = this.libraryService.getBooks();
-  }
 
   onSaveBook(book: Book): void {
     this.bookshelfService.createBook(book);

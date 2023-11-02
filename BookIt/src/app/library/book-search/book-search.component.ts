@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { LibraryService } from '../library.service';
 
 @Component({
   selector: 'app-book-search',
   templateUrl: './book-search.component.html',
   styleUrls: ['./book-search.component.css']
 })
-export class BookSearchComponent implements OnInit {
+export class BookSearchComponent {
 
-  constructor() { }
+  constructor(private libraryService: LibraryService) {}
 
-  ngOnInit(): void {
+  public fetchBooks(searchQuery: string): void {
+    this.libraryService.fetchBooks(searchQuery);
   }
-
 }
