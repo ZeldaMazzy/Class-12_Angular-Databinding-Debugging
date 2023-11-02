@@ -1,4 +1,4 @@
-<form (ngSubmit)="submitBook()">
+<form (ngSubmit)="submitBook()" [formGroup]="bookDetailsForm">
     <div id="book-form-data">
 
         <!-- Title -->
@@ -8,8 +8,14 @@
                 id="title" 
                 name="title" 
                 class="form-control"
+                formControlName="title"
             />
-            <span *ngIf="false" class="text-danger fs-6">Title Is Required</span>
+            <div *ngIf="bookDetailsForm.get('title').touched">
+                <span *ngIf="getErrors('title')" 
+                    class="text-danger fs-6">Title Is Required</span>
+                <span *ngIf="getErrors('title', 'maxlength')" 
+                    class="text-danger fs-6">Title Is WAAAAY too long man</span>
+            </div>
         </div>
 
         <!-- Author -->
@@ -19,8 +25,14 @@
                 name="author" 
                 id="author"
                 class="form-control"
+                formControlName="author"
             />
-            <span *ngIf="false" class="text-danger fs-6">Author Is Required.</span>
+            <div *ngIf="bookDetailsForm.get('author').touched">
+                <span *ngIf="getErrors('author')" 
+                    class="text-danger fs-6">Author Is Required</span>
+                <span *ngIf="getErrors('author', 'maxlength')" 
+                    class="text-danger fs-6">Nobody's name is this long.</span>
+            </div>
         </div>
 
         <!-- Genre -->
@@ -29,6 +41,7 @@
             <select name="genre" 
                 id="genre"
                 class="form-control"
+                formControlName="genre"
             >
                 <option value="Mystery">Mystery</option>
                 <option value="Self-Help">Self-Help</option>
@@ -38,7 +51,7 @@
                 <option value="Drama">Drama</option>
                 <option value="Accurate Historical Retelling">Accurate Historical Retelling</option>
             </select>
-            <span *ngIf="false" class="fs-6 text-danger">Genre Is Required</span>
+            <span *ngIf="bookDetailsForm.get('genre').invalid && bookDetailsForm.get('genre').touched" class="text-danger fs-6">Genre Is Required</span>
 
             <!-- Submit -->
             <div class="mt-4" style="width:100%; text-align:center">

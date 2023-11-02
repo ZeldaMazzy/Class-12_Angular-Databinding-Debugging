@@ -2,7 +2,7 @@
     [routerLink]="bookIndex"
 >
     <div class="float-left">
-        <h5 class="list-group-item-heading"><strong>{{book.title}}</strong> - {{book.author}}</h5>
+        <h5 class="list-group-item-heading"><strong>{{book.title | titleCase}}</strong> - {{book.author}}</h5>
         <p class="list-group-item-text mb-0"><small>{{book.genre}}</small></p>
     </div>
     <div class="float-right">

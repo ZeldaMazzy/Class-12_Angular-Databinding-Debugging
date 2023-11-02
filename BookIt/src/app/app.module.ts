@@ -18,6 +18,7 @@ import { NotificationComponent } from './shared/notification/notification.compon
 import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
+import { TitleCasePipe } from './shared/title-case.pipe';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-f
     EditComponent,
     NotificationComponent,
     BookFormTdComponent,
-    BookFormReactiveComponent
+    BookFormReactiveComponent,
+    TitleCasePipe
   ],
   imports: [
     BrowserModule,

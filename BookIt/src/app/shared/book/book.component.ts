@@ -10,4 +10,18 @@ import { BookshelfService } from 'src/app/bookshelf/bookshelf.service';
 export class BookComponent {
   @Input() book: Book;
   @Input() bookIndex: number;
+
+  transformToUpperCase(input: string): string {
+    const individualWords = input.split(" ");
+    individualWords.map(word => {
+      const l: number = word.length;
+      const firstLetter: string = word[0].toUpperCase();
+      const lastLetters: string = word.slice(1, l).toLowerCase();
+      return firstLetter + lastLetters
+    })
+
+    console.log("transforming");
+
+    return individualWords.join(" ");
+  }
 }
