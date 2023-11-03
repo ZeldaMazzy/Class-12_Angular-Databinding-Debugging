@@ -1,10 +1,31 @@
 <a class="list-group-item clearfix book-link"
     [routerLink]="bookIndex"
 >
+    
+    <!-- INFO -->
     <div class="float-left">
-        <h5 class="list-group-item-heading"><strong>{{book.title | titleCase}}</strong> - {{book.author}}</h5>
-        <p class="list-group-item-text mb-0"><small>{{book.genre}}</small></p>
+        <!-- Title - Author -->
+        <h5 class="list-group-item-heading">
+            <strong>{{book.title}}</strong> - {{book.author}}
+        </h5>
+
+        <!-- Genre -->
+        <p class="list-group-item-text mb-0" *ngIf="book.genre.length > 0">
+            <small>{{book.genre}}</small>
+        </p>
+
+        <!-- Price -->
+        <p class="list-group-item-text mb-0" *ngIf="book.price > 0">
+            <small>{{book.price | currency}}</small>
+        </p>
+
+        <!-- First Publish Year -->
+        <p class="list-group-item-text mb-0">
+            <small>{{book.firstPublishYear}}</small>
+        </p>
     </div>
+
+    <!-- Image -->
     <div class="float-right">
         <img [src]="book.coverImgPath" 
             [alt]="book.title" 

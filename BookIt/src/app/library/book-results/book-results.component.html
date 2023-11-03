@@ -1,8 +1,15 @@
-<div class="row mb-3" *ngFor="let bookData of bookList">
-    <div class="col-md-12">
-        <app-book [book]="bookData"></app-book>
+<div class="alert alert-info mt-5" *ngIf="componentState == state.PRE_SEARCH">
+    Please search for a book.
+</div>
+<div class="alert alert-warning mt-5" *ngIf="componentState == state.NO_RESULTS">
+    No books could be found from the search :(
+</div>
+
+<div class="row mb-3 mt-5" *ngFor="let bookData of bookList">
+    <div class="col-md-12" style="display:flex">
+        <app-book style="width:100%" [book]="bookData"></app-book>
         <button
-            class="float-right"
+            class="float-right btn btn-light"
             style="border: none; font-size: 16px"
             (click)="onSaveBook(bookData)"
             >

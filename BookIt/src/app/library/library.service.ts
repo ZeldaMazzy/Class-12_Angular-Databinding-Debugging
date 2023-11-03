@@ -2,12 +2,14 @@ import { Injectable } from "@angular/core";
 import { Book } from "../shared/book/book.model";
 import { HttpClient } from "@angular/common/http";
 import { Q } from "../shared/utility/utility.const";
+import { Subject } from "rxjs";
 
 @Injectable({
     providedIn: "root"
 })
 export class LibraryService {
 
+    public bookList$: Subject<Book[]> = new Subject();
     private librarySearchResults: Book[] = [];
     private readonly baseURL: string = 'http://openlibrary.org/search.json?'
 
@@ -17,12 +19,11 @@ export class LibraryService {
         this.librarySearchResults = [];
 
         const request = this.splitSearch(searchQuery);
-        console.log("Query after splitting: ", request);
 
         this.http.get(this.baseURL + Q.GENERAL + request)
             .subscribe(response => {
-                console.log(response);
-                this.saveBooks(response)
+                this.saveBooks(response);
+                this.bookList$.next(this.librarySearchResults)
             });
     }
 
@@ -41,12 +42,9 @@ export class LibraryService {
 
             this.librarySearchResults.push(newBook);
         });
-
-        console.log("All books: ", this.librarySearchResults)
     }
 
     private splitSearch(searchQuery: string): string {
-        console.log("Query before splitting: ", searchQuery);
         return searchQuery.split(" ").join("+").toLowerCase();
     }
 }
