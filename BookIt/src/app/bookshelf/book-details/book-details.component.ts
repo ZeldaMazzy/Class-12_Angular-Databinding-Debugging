@@ -22,7 +22,7 @@ export class BookDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.bookIndex = +params["book-id"];
       this.book = this.bookshelfService.getBookByIndex(this.bookIndex);
-      this.bookshelfService.emitSelectedBook(this.book);
+      this.bookshelfService.bookSelected.next(this.book);
     })
   }
 

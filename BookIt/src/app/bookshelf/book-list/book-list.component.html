@@ -5,9 +5,9 @@
 </div>
 <div class="row mb-3" 
     *ngFor="let bookData of bookList; let i = index">
-    <div class="col-md-12">
-        <app-book [book]="bookData" [bookIndex]="i"></app-book>
-        <button class="float-right"
+    <div class="col-md-12" style="display:flex">
+        <app-book style="width:100%" [book]="bookData" [bookIndex]="i"></app-book>
+        <button class="float-right btn btn-outline-danger"
             style="border: none; font-size: 16px"
             (click)="onRemoveBook(i)">
             &minus;

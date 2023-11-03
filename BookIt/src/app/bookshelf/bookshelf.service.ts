@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Book } from "../shared/book/book.model";
-import { TEST_BOOK_LIST } from "../shared/book/book.constants";
 import { Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn: "root"
@@ -10,32 +11,40 @@ export class BookshelfService {
 
     bookSelected: Subject<Book> = new Subject();
     bookListChanged: Subject<Book[]> = new Subject();
+    private readonly firebaseURL: string = environment.firebaseRootURL;
 
-    private globalBookList: Book[] = TEST_BOOK_LIST.slice();
+    constructor(private http: HttpClient){}
 
-    public getAllBooks(): Book[] {
-        return this.globalBookList.slice();
+    private globalBookList: Book[] = [];
+
+    public getAllBooks(): void {
+        this.http.get(this.firebaseURL)
+            .subscribe((books: Book[] | []) => {
+                this.globalBookList = books.slice() || []
+                this.bookListChanged.next(books || [])
+            })
     }
 
     public getBookByIndex(bookIndex: number): Book {
         return this.globalBookList[bookIndex]
     }
 
-    public emitSelectedBook(book: Book): void {
-        this.bookSelected.next(book);
-    }
-
     public createBook(bookToCreate: Book): void {
         this.globalBookList.push(bookToCreate);
-        this.bookListChanged.next(this.globalBookList.slice());
+        this.saveBooks();
     }
 
     public removeBookByIndex(bookIndex: number): void {
         if(bookIndex < 0) return;
 
-        console.log("We are now in the service! We are still deleting book number ", bookIndex);
         this.globalBookList.splice(bookIndex, 1);
-        console.log("The book was successfully deleted. Broadcasting the updated list now!");
-        this.bookListChanged.next(this.globalBookList.slice())
+        this.saveBooks();
+    }
+
+    private saveBooks(): void {
+        this.http.put(this.firebaseURL, this.globalBookList)
+            .subscribe(() => {
+                this.bookListChanged.next(this.globalBookList.slice())
+            });
     }
 }

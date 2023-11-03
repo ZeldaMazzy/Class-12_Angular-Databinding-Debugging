@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebaseRootURL: "https://bookit-personal-default-rtdb.firebaseio.com/books.json"
+  firebaseRootURL: "https://bookit-zeldas-class-2023-default-rtdb.firebaseio.com/books.json"
 };
 
 /*

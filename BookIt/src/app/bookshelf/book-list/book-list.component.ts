@@ -14,8 +14,8 @@ export class BookListComponent implements OnInit {
   constructor(private bookshelfService: BookshelfService) {}
 
   ngOnInit(): void {
-    this.bookList = this.bookshelfService.getAllBooks()
-
+    // this.bookList = this.bookshelfService.getAllBooks()
+    this.bookshelfService.getAllBooks();
     this.bookshelfService.bookListChanged.subscribe(
       books => {
         this.bookList = books.slice();
