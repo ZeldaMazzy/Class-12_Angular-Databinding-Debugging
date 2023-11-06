@@ -20,6 +20,7 @@ import { BookFormTdComponent } from './bookshelf/book-form-td/book-form-td.compo
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-form-reactive.component';
 import { TitleCasePipe } from './shared/title-case.pipe';
+import { AuthComponent } from './shared/auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TitleCasePipe } from './shared/title-case.pipe';
     NotificationComponent,
     BookFormTdComponent,
     BookFormReactiveComponent,
-    TitleCasePipe
+    TitleCasePipe,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
