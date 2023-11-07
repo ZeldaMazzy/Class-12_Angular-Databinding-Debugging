@@ -1,1 +1,58 @@
-<p>auth works!</p>
+<div class="row">
+    <div class="col-xs-12 col-md-6 offset-md-3">
+        <form #authFormRef="ngForm" (ngSubmit)="onAuthFormSubmit(authFormRef)">
+            <p *ngIf="isLoginMode">Log In with Your Credentials</p>
+            <p *ngIf="isLoginMode == false">Sign Up with a New Account</p>
+            <!-- EMAIL -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    email
+                    ngModel
+                    required
+                />
+            </div>
+  
+            <!-- PASSWORD -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    class="form-control"
+                    minlength="6"
+                    ngModel
+                    required
+                />
+            </div>
+
+            <!-- Switch to login -->
+            <div style="display:inline-grid">
+                <a *ngIf="isLoginMode" 
+                    (click)="isLoginMode = !isLoginMode">
+                    <small>Sign Up for a New Account</small>
+                </a>
+                <a *ngIf="isLoginMode == false" 
+                    (click)="isLoginMode = !isLoginMode">
+                    <small>Already a member? Log In.</small>
+                </a>
+      
+                <!-- BUTTONS -->
+                <button class="btn btn-primary" 
+                    type="submit" 
+                    [disabled]="authFormRef.invalid">
+                    {{ isLoginMode ? 'Log In' : 'Sign Up' }}
+                </button>
+            </div>
+        </form>
+
+        <div class="alert alert-danger mt-4" *ngIf="errorMessage.length">
+            {{errorMessage}}
+        </div>
+    </div>
+</div>

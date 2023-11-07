@@ -6,11 +6,14 @@ import { LibraryComponent } from "./library/library.component";
 import { NotFoundComponent } from "./shared/not-found/not-found.component";
 import { BookDetailsComponent } from './bookshelf/book-details/book-details.component';
 import { EditComponent } from './bookshelf/edit/edit.component';
+import { AuthComponent } from './shared/auth/auth.component';
+import { AuthGuard } from './shared/http-utility/auth.guard';
 
 const routes: Route[] = [
     { path: "", pathMatch: "full", redirectTo: "bookshelf"},
     { path: "bookshelf", 
         component: BookshelfComponent,
+        canActivate: [AuthGuard],
         children: [
             { path: "", pathMatch: "full", component: BookshelfHomeComponent },
             { path: "new-book", component: EditComponent },
@@ -18,7 +21,8 @@ const routes: Route[] = [
             { path: ":book-id/edit", component: EditComponent }
         ]
     },
-    { path: "library", component: LibraryComponent},
+    { path: "library", component: LibraryComponent, canActivate: [AuthGuard]},
+    { path: "authentication", component: AuthComponent },
     { path: "**", component: NotFoundComponent}
 ]
 
