@@ -22,6 +22,7 @@ import { BookFormReactiveComponent } from './bookshelf/book-form-reactive/book-f
 import { TitleCasePipe } from './shared/title-case.pipe';
 import { AuthComponent } from './shared/auth/auth.component';
 import { AuthInterceptor } from './shared/http-utility/auth.interceptor';
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AuthInterceptor } from './shared/http-utility/auth.interceptor';
     BookFormTdComponent,
     BookFormReactiveComponent,
     TitleCasePipe,
-    AuthComponent
+    AuthComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
