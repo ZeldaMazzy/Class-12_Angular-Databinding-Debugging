@@ -1,1 +1,13 @@
-<p>alert works!</p>
+<div *ngIf="message.length > 0">
+  <!-- Background -->
+  <div class="backdrop"></div>
+  
+  <!-- Content -->
+  <div class="alert-box">
+    <p>{{ message }}</p>
+  
+    <div class="alert-box-actions">
+      <button type="button" (click)="onClose()">Close</button>
+    </div>
+  </div>
+</div>

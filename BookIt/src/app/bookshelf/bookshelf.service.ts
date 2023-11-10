@@ -31,12 +31,14 @@ export class BookshelfService {
 
     public createBook(bookToCreate: Book): void {
         this.globalBookList.push(bookToCreate);
+        this.bookSelected.next(bookToCreate);
         this.saveBooks();
     }
 
     public removeBookByIndex(bookIndex: number): void {
         if(bookIndex < 0) return;
 
+        this.bookSelected.next(this.globalBookList[bookIndex]);
         this.globalBookList.splice(bookIndex, 1);
         this.saveBooks();
     }
