@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { AuthService } from './auth.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
@@ -14,9 +14,15 @@ export class AuthComponent {
   isLoginMode: boolean = true;
   errorMessage: string = "";
 
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) {
+    const form: FormGroup = new FormGroup({
+      email: new FormControl("zelda@zeldamazur.com"),
+      password: new FormControl("123456")
+    })
+    this.onAuthFormSubmit(form)
+  }
 
-  onAuthFormSubmit(form: NgForm): void {
+  onAuthFormSubmit(form: FormGroup): void {
     if(form.invalid) return;
 
     let authObservable = new Observable()

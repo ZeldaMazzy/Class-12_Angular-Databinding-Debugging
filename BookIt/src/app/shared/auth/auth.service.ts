@@ -48,7 +48,18 @@ export class AuthService {
     this.router.navigate(["authentication"]);
   }
 
-  private handleAuth(authResponse: AuthResponse): void {
+  public getUserDataFromStorage(): AuthResponse | undefined {
+    return JSON.parse(localStorage.getItem("userData"))
+  }
+
+  public getAccessTokenFromStorage(): string {
+    if(!localStorage.getItem("userData")) return "";
+    const data = JSON.parse(localStorage.getItem("userData"));
+
+    return data.accessToken;
+  }
+
+  public handleAuth(authResponse: AuthResponse): void {
     const {email, localId, idToken} = authResponse
     const expiresIn: number = Date.now() + +authResponse.expiresIn;
 
