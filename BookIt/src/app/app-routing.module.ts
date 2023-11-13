@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { Route, RouterModule } from "@angular/router";
+import { PreloadAllModules, Route, RouterModule } from "@angular/router";
 import { AuthGuard } from './auth/http-utility/auth.guard';
 import { NotFoundComponent } from "./shared/not-found/not-found.component";
 
@@ -29,7 +29,10 @@ const routes: Route[] = [
 ]
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes, {
+        preloadingStrategy: PreloadAllModules,
+        initialNavigation: "enabled"
+      })],
     exports: [RouterModule]
 })
 export class AppRoutingModule{}
