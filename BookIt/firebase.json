@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "book-it",
     "public": "dist/book-it",
     "ignore": [
       "firebase.json",
