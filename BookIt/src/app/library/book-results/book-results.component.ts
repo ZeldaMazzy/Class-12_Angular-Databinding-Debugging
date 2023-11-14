@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from 'src/app/shared/book/book.model';
 import { LibraryService } from '../library.service';
 import { BookshelfService } from 'src/app/bookshelf/bookshelf.service';
+import { swoopTrigger } from 'src/app/shared/animations/swoop.animation';
 
 @Component({
   selector: 'app-book-results',
   templateUrl: './book-results.component.html',
-  styleUrls: ['./book-results.component.css']
+  styleUrls: ['./book-results.component.css'],
+  animations: [swoopTrigger]
 })
 export class BookResultsComponent implements OnInit {
 
