@@ -22,6 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
           // Make sure we have a user
           console.log(user);
           if (!user) return next.handle(request);
+          if (!request.url.toLowerCase().includes("firebase")) return next.handle(request);
 
           // Modify the req to have access to the token
           const modifiedReq = request.clone({
