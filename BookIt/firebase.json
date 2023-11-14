@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site": "book-it",
+    "site": "bookit-zeldas-class-2023",
     "public": "dist/book-it",
     "ignore": [
       "firebase.json",
