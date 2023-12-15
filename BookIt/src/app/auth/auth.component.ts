@@ -14,13 +14,7 @@ export class AuthComponent {
   isLoginMode: boolean = true;
   errorMessage: string = "";
 
-  constructor(private auth: AuthService, private router: Router) {
-    const form: FormGroup = new FormGroup({
-      email: new FormControl("zelda@zeldamazur.com"),
-      password: new FormControl("123456")
-    })
-    this.onAuthFormSubmit(form)
-  }
+  constructor(private auth: AuthService, private router: Router) {}
 
   onAuthFormSubmit(form: FormGroup): void {
     if(form.invalid) return;
