@@ -53,10 +53,7 @@ export class AuthService {
   }
 
   public getAccessTokenFromStorage(): string {
-    if(!localStorage.getItem("userData")) return "";
-    const data = JSON.parse(localStorage.getItem("userData"));
-
-    return data.accessToken;
+    return getUserDataFromStorage().getAccessToken;
   }
 
   public handleAuth(authResponse: AuthResponse): void {
